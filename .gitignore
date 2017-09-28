@@ -1,0 +1,7 @@
+
+# Object files
+*.o
+
+# Vim temporary files
+*~
+*.swp
