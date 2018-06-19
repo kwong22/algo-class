@@ -11,6 +11,18 @@ struct node {
   node* next;
 };
 
+// linked list that contains head of list and number of elements
+struct linked_list {
+  int len;
+  node* head;
+
+  // constructor
+  linked_list() {
+    len = 0;
+    head = NULL;
+  }
+};
+
 void delete_node(node**, node*);
 void add_node_after(node*, int);
 void add_node_before(node*, int);

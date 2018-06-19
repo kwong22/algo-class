@@ -15,14 +15,14 @@ CFLAGS = -g
 EXE = calculate_min_cut
 
 # space-separated list of user-defined header files
-HDRS = 
+HDRS = linked_list.h
 
 # space-separated list of libraries, if any,
 # each of which should be prefixed with -l
 LIBS =
 
 # space-separated list of source files
-SRCS = calculate_min_cut.cpp
+SRCS = calculate_min_cut.cpp linked_list.cpp
 
 # automatically generated list of object files
 OBJS = $(SRCS:.cpp=.o)
