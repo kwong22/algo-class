@@ -20,7 +20,7 @@ int main() {
   Graph g;
   std::string filename = "kargerMinCut.txt";
 
-  int num_trials = 25000;
+  int num_trials = 1000;
   int best_min_cut = 2517; // initialize as total number of edges in graph
 
   // calculate min cut many times, and keep track of best min cut

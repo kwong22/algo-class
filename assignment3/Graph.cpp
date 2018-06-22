@@ -114,29 +114,21 @@ void merge_vertices(Graph& g, int v1, int v2) {
   }
 
   // migrate edges from v2 to v1
-  // start from the end and move up until v2 is no longer the first vertex
-  int j = g.edges.size() - 1;
-  for (; j >= 0 && g.edges[j].v1 >= v2; --j) {
+  // iterate backward so that erasing an edge does not disrupt the loop
+  for (int j = g.edges.size() - 1; j >= 0; --j) {
     // track any edge endpoint that becomes orphaned
     int orphan;
 
     // remove edge if it contains v2
     if (g.edges[j].v1 == v2) {
+      // v2 is the first vertex of the edge, so second vertex >= v2 >= v1
       orphan = g.edges[j].v2;
       g.edges.erase(g.edges.begin() + j);
       
       // add edge back even if graph already contains it
       add_edge(g, v1, orphan);
-    }
-  }
-
-  // continue from last index, now v2 will be second vertex
-  for (; j >= 0; --j) {
-    // track any edge endpoint that becomes orphaned
-    int orphan;
-
-    // remove edge if it contains v2
-    if (g.edges[j].v2 == v2) {
+    } else if (g.edges[j].v2 == v2) {
+      // v2 is the second vertex of the edge, so first vertex may be < v1
       orphan = g.edges[j].v1;
       g.edges.erase(g.edges.begin() + j);
 
